@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="UTF-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="/example.css">
+</head>
+<body>
+<h1>DropBox Account</h1>
+
+<table class="account">
+<tr><th>ID</th><td th:text="${map.ACCOUNT.ID}"></td></tr>
+<tr><th>NAME</th><td th:text="${map.ACCOUNT.NAME}"></td></tr>
+<tr><th>E-Mail</th><td th:text="${map.ACCOUNT.EMAIL}"></td></tr>
+</table>
+
+<table class="folder-list">
+<tr><th th:text="${map.PATH + '/'}">path</th><tr>
+
+<tr th:if="${map.PATH!=''}" class="folder">
+<td><a href="../" class="name">..</a></td>
+</tr>
+
+<tr th:each="metadataMap:${map.FOLDER_LIST}" class="folder">
+<td><a th:href="${'./' + metadataMap.name} + '/'" th:text="${metadataMap.name}" class="name"></a></td>
+</tr>
+
+<tr th:each="metadataMap:${map.FILE_LIST}" class="file">
+<td><a th:href="${'./' + metadataMap.name}" th:text="${metadataMap.name}" class="name"></a></td>
+</tr>
+</table>
+
+<div class="fileupload">
+<div>FILE UPLOAD:</div>
+<form action="upload" method="post" enctype="multipart/form-data">
+<input type="file" name="upload_file" />
+<input type="submit" name="UPLOAD" value="UPLOAD"/> 
+</form>
+</div>
+</body>
+</html>

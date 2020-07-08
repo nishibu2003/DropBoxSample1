@@ -1,0 +1,10 @@
+body {backgrund-color:#EEEEEE;}
+table {border: solid 1px black; border-collapse: collapse;}
+th {border: solid 1px black; background-color:#80FFFF; padding:0.5em;}
+td {border: solid 1px black; background-color:#E6E6E6; padding:0.5em;}
+
+table.account ,table.folder-list {margin-bottom: 1em;}
+
+.folder-list th{text-align: left;}
+.folder .name::before {content: "■";}
+.file .name::before {content: "・";}
